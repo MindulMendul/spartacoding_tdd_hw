@@ -15,7 +15,6 @@ import {
   useValidateSearch,
 } from '../../hooks/use-validate-search';
 import { fireEvent, render } from '@testing-library/react';
-import '@testing-library/jest-dom/jest-globals';
 import '@testing-library/jest-dom';
 
 vi.mock('../../hooks/use-validate-search', async (importOriginal) => {
@@ -34,6 +33,24 @@ describe('Search Field', () => {
     const searchString = 'TDD 깔쌈하게 잘 구현하는 법';
     _useValidateSearch.mockReturnValue({
       searchErrorText: '',
+      validateSearch: () => null,
+    });
+
+    // When
+    const { getByTestId, queryByText } = render(<SearchField />);
+    const searchStringInput = getByTestId('search');
+    fireEvent.change(searchStringInput, { target: { value: searchString } });
+
+    // Then
+    expect(queryByText(SEARCH_ERROR_TEXT)).not.toBeInTheDocument();
+  });
+
+  // User Story 2번
+  it('유저가 무언가 입력하지 않으면 에러텍스트가 노출된다.', () => {
+    // Given
+    const searchString = '';
+    _useValidateSearch.mockReturnValue({
+      searchErrorText: SEARCH_ERROR_TEXT,
       validateSearch: () => null,
     });
 

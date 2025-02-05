@@ -8,7 +8,9 @@ export const SearchField = ({}: any) => {
   return (
     <TextField
       id="search"
-      data-testid="search"
+      inputProps={{
+        'data-testid': 'search',
+      }}
       label="검색창"
       placeholder="검색어를 입력해주세요"
       fullWidth
