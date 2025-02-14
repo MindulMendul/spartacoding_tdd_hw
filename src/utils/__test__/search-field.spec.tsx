@@ -4,8 +4,8 @@
  * @userStory
  * 유저는 검색창에 검색할 내용을 입력할 수 있다.
  *
- * * 1) 유저가 무언가 입력하면 에러텍스트는 노출되지 않는다.
- * * 2) 유저가 아무것도 입력하지 않고 검색하면 에러텍스트가 노출된다.
+ * * 1) 유저가 검색할 데이터를 입력하고 검색을 시도하면 에러텍스트는 노출되지 않는다.
+ * * 2) 유저가 아무것도 입력하지 않고 검색을 시도하면 에러텍스트가 노출된다.
  */
 
 import { Mock, vi } from 'vitest';
@@ -28,7 +28,7 @@ const _useValidateSearch = useValidateSearch as Mock;
 
 describe('Search Field', () => {
   // User Story 1번
-  it('유저가 무언가 입력하면 에러텍스트는 노출되지 않는다.', () => {
+  it('유저가 검색할 데이터를 입력하고 검색을 시도하면 에러텍스트는 노출되지 않는다.', () => {
     // Given
     const searchString = 'TDD 깔쌈하게 잘 구현하는 법';
     _useValidateSearch.mockReturnValue({
@@ -46,7 +46,7 @@ describe('Search Field', () => {
   });
 
   // User Story 2번
-  it('유저가 무언가 입력하지 않으면 에러텍스트가 노출된다.', () => {
+  it('유저가 검색할 데이터를 입력하지 않고 검색을 시도하면 에러텍스트가 노출된다.', () => {
     // Given
     const searchString = '';
     _useValidateSearch.mockReturnValue({
