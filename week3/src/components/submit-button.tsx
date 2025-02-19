@@ -1,8 +1,18 @@
-export const SubmitButton = ({ onSubmit }: any) => {
+import { MouseEventHandler, ReactNode } from 'react';
+
+export const SubmitButton = ({
+  children,
+  dataTestid,
+  onSubmit,
+}: {
+  children: ReactNode;
+  dataTestid: string;
+  onSubmit: MouseEventHandler<Element>;
+}) => {
   return (
     <>
-      <button data-testid="submit-button" onClick={onSubmit}>
-        검색
+      <button data-testid={dataTestid} onClick={onSubmit}>
+        {children}
       </button>
     </>
   );

@@ -1,10 +1,18 @@
 import { TextField } from '@mui/material';
-import { useRef } from 'react';
+import { ChangeEventHandler, useRef } from 'react';
 import { useValidateSearch } from '../hooks/use-validate-search';
 
-export const SearchField = ({}: any) => {
+export const SearchField = () => {
   const searchValue = useRef<string>();
   const { searchErrorText, validateSearch } = useValidateSearch();
+
+  const handleChange: ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = ({ target }: { target: HTMLInputElement | HTMLTextAreaElement }) => {
+    const searchString = target.value;
+    validateSearch(searchString);
+    searchValue.current = searchString;
+  };
   return (
     <TextField
       id="search"
@@ -18,11 +26,7 @@ export const SearchField = ({}: any) => {
       error={Boolean(searchErrorText)}
       helperText={searchErrorText}
       //
-      onChange={({ target }) => {
-        const searchString = target.value;
-        validateSearch(searchString);
-        searchValue.current = searchString;
-      }}
+      onChange={handleChange}
     />
   );
 };
