@@ -2,7 +2,7 @@ import { TextField } from '@mui/material';
 import { useRef } from 'react';
 import { useValidateSearch } from '../hooks/use-validate-search';
 
-export const SearchField = ({}: any) => {
+export const SearchField = () => {
   const searchValue = useRef<string>();
   const { searchErrorText, validateSearch } = useValidateSearch();
   return (
@@ -18,7 +18,7 @@ export const SearchField = ({}: any) => {
       error={Boolean(searchErrorText)}
       helperText={searchErrorText}
       //
-      onChange={({ target }) => {
+      onChange={({ target }: { target: HTMLButtonElement }) => {
         const searchString = target.value;
         validateSearch(searchString);
         searchValue.current = searchString;
