@@ -1,32 +1,22 @@
 import { TextField } from '@mui/material';
-import { ChangeEventHandler, useRef } from 'react';
-import { useValidateSearch } from '../hooks/use-validate-search';
+import { useValidateFrequency } from '../hooks/use-validate-frequency';
 
-export const SearchField = () => {
-  const searchValue = useRef<string>();
-  const { searchErrorText, validateSearch } = useValidateSearch();
-
-  const handleChange: ChangeEventHandler<
-    HTMLInputElement | HTMLTextAreaElement
-  > = ({ target }: { target: HTMLInputElement | HTMLTextAreaElement }) => {
-    const searchString = target.value;
-    validateSearch(searchString);
-    searchValue.current = searchString;
-  };
+export const SearchField = ({ onChange }: { onChange: any }) => {
+  const { frequencyErrorText } = useValidateFrequency();
   return (
     <TextField
       id="search"
       inputProps={{
         'data-testid': 'search',
       }}
-      label="검색창"
-      placeholder="검색어를 입력해주세요"
+      label="2주차 함수 테스트기"
+      placeholder="입력 후 결과를 아래에 확인하세요!"
       fullWidth
       // error props
-      error={Boolean(searchErrorText)}
-      helperText={searchErrorText}
+      error={Boolean(frequencyErrorText)}
+      helperText={frequencyErrorText}
       //
-      onChange={handleChange}
+      onChange={onChange}
     />
   );
 };

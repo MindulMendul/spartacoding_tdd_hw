@@ -1,14 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import App from '../App';
-import { SEARCH_ERROR_TEXT } from '../hooks/use-validate-search';
+import { SEARCH_ERROR_TEXT } from '../hooks/use-validate-frequency';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: 'Example/SignUpForm',
   render: () => {
-    return (
-      <App/>
-    );
+    return <App />;
   },
   component: App,
   parameters: {
