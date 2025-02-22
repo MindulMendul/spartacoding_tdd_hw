@@ -1,4 +1,4 @@
-import { SearchForm } from './components/search-form';
+import { SearchForm } from './components/frequency-form';
 
 function App() {
   return (

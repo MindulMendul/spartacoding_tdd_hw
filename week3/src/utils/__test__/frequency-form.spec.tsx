@@ -17,7 +17,7 @@ import {
 } from '../../hooks/use-validate-frequency';
 import { fireEvent, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { SearchForm } from '../../components/search-form';
+import { FrequencyForm } from '../../components/frequency-form';
 
 vi.mock('../../hooks/use-validate-frequency', async (importOriginal) => {
   const mod = await importOriginal<
@@ -32,16 +32,18 @@ describe('Search Form', () => {
   // User Story 1번
   it('유저가 검색할 데이터를 입력하고 검색을 시도하면 에러텍스트는 노출되지 않는다.', () => {
     // Given
-    const searchString = 'TDD 깔쌈하게 잘 구현하는 법';
+    const frequencyString = 'TDD 깔쌈하게 잘 구현하는 법';
     _useValidateFrequency.mockReturnValue({
-      searchErrorText: '',
-      validateSearch: () => null,
+      frequencyErrorText: '',
+      validateFrequency: () => null,
     });
 
     // When
-    const { getByTestId, queryByText } = render(<SearchForm />);
-    const searchStringInput = getByTestId('search');
-    fireEvent.change(searchStringInput, { target: { value: searchString } });
+    const { getByTestId, queryByText } = render(<FrequencyForm />);
+    const frequencyStringInput = getByTestId('search');
+    fireEvent.change(frequencyStringInput, {
+      target: { value: frequencyString },
+    });
 
     // Then
     expect(queryByText(FREQUENCY_ERROR_TEXT)).not.toBeInTheDocument();
@@ -50,16 +52,18 @@ describe('Search Form', () => {
   // User Story 2번
   it('유저가 검색할 데이터를 입력하지 않고 검색을 시도하면 에러텍스트가 노출된다.', () => {
     // Given
-    const searchString = '';
+    const frequencyString = '';
     _useValidateFrequency.mockReturnValue({
-      searchErrorText: FREQUENCY_ERROR_TEXT,
-      validateSearch: () => null,
+      frequencyErrorText: FREQUENCY_ERROR_TEXT,
+      validateFrequency: () => null,
     });
 
     // When
-    const { getByTestId, queryByText } = render(<SearchForm />);
-    const searchStringInput = getByTestId('search');
-    fireEvent.change(searchStringInput, { target: { value: searchString } });
+    const { getByTestId, queryByText } = render(<FrequencyForm />);
+    const frequencyStringInput = getByTestId('search');
+    fireEvent.change(frequencyStringInput, {
+      target: { value: frequencyString },
+    });
 
     // Then
     expect(queryByText(FREQUENCY_ERROR_TEXT)).toBeInTheDocument();
