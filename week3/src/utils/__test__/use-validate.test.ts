@@ -5,44 +5,54 @@ import {
   FREQUENCY_ERROR_TEXT,
   useValidateFrequency,
 } from '../../hooks/use-validate-frequency';
+import { findMostFrequentChar } from '../week2';
 
-describe(`useValidateFrequency는 검색할 내용이 없으면 에러텍스트를 반환하고, 검색할 내용이 있으면 빈 문자열을 반환한다.`, () => {
-  it('검색할 내용이 존재하는 경우 에러 텍스트를 반환하지 않는다.', () => {
+describe(`2주차 내용을 바탕으로 만든 3주차 기능 테스트`, () => {
+  it('유저가 예측값을 입력했을 때 예측값이 결과값과 같다면, 에러 메시지를 보여주지 않는다.', () => {
     // GWT
     // Given
-    const exampleSearchString = 'TDD 구현하는 법';
+    const frequencyString =
+      '[KDC] 시니어로 가는 지름길, 프론트엔드 실무 스킬(TDD, CI/CD, 성능 최적화)';
+    const frequencyExpectedString = 'D';
     const expectedResult = {
       frequencyErrorText: '',
-      validateFrequency: () => null,
     };
 
     // When
     const { result } = renderHook(useValidateFrequency);
     act(() => {
-      result.current.validateFrequency(exampleSearchString);
+      result.current.validateFrequency(
+        findMostFrequentChar(frequencyString).join(),
+        frequencyExpectedString
+      );
     });
+
     // Then
-    expect(result.current.frequencyErrorText).toEqual(
+    expect(result.current.frequencyErrorText).toBe(
       expectedResult.frequencyErrorText
     );
   });
 
-  it('검색할 내용이 존재하지 않는 경우 에러텍스트를 반환한다.', () => {
+  it('유저가 예측값을 입력했을 때 예측값이 결과값과 다르다면, 예측값이 틀렸다고 에러 메시지를 보여준다.', () => {
     // GWT
     // Given
-    const exampleSearchString = '';
+    const frequencyString = 'TDD 깔쌈하게 잘 구현하는 법';
+    const frequencyExpectedString = 'asdf';
     const expectedResult = {
       frequencyErrorText: FREQUENCY_ERROR_TEXT,
-      validateFrequency: () => null,
     };
 
     // When
     const { result } = renderHook(useValidateFrequency);
     act(() => {
-      result.current.validateFrequency(exampleSearchString);
+      result.current.validateFrequency(
+        findMostFrequentChar(frequencyString).join(),
+        frequencyExpectedString
+      );
     });
+
     // Then
-    expect(result.current.frequencyErrorText).toEqual(
+    expect(result.current.frequencyErrorText).toBe(
       expectedResult.frequencyErrorText
     );
   });

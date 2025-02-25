@@ -9,9 +9,9 @@ export const FrequencyField = ({
 }) => {
   return (
     <TextField
-      id="frequency"
+      id="frequency-expected"
       inputProps={{
-        'data-testid': 'frequency',
+        'data-testid': 'frequency-expected',
       }}
       label="2주차 함수 테스트기"
       placeholder="입력 후 결과를 아래에 확인하세요!"

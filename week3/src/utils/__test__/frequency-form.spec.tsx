@@ -28,11 +28,12 @@ vi.mock('../../hooks/use-validate-frequency', async (importOriginal) => {
 
 const _useValidateFrequency = useValidateFrequency as Mock;
 
-describe('Frequency Form', () => {
+describe('1, 2주차 내용을 바탕으로 제작한 3주 차 통합테스트', () => {
   // User Story 1번
   it('유저가 예측값을 입력했을 때 예측값이 결과값과 같다면, 에러 메시지를 보여주지 않는다.', () => {
     // Given
-    const frequencyString = 'TDD 깔쌈하게 잘 구현하는 법';
+    const frequencyString = 'ㅁㅁㅁㅁrasdfgzozxx';
+    const frequencyExpectedString = 'ㅁ';
     _useValidateFrequency.mockReturnValue({
       frequencyErrorText: '',
       validateFrequency: () => null,
@@ -40,9 +41,15 @@ describe('Frequency Form', () => {
 
     // When
     const { getByTestId, queryByText } = render(<FrequencyForm />);
+
     const frequencyStringInput = getByTestId('frequency');
     fireEvent.change(frequencyStringInput, {
       target: { value: frequencyString },
+    });
+
+    const frequencyExpectedStringInput = getByTestId('frequency-expected');
+    fireEvent.change(frequencyExpectedStringInput, {
+      target: { value: frequencyExpectedString },
     });
 
     // Then
@@ -52,7 +59,8 @@ describe('Frequency Form', () => {
   // User Story 2번
   it('유저가 예측값을 입력했을 때 예측값이 결과값과 다르다면, 예측값이 틀렸다고 에러 메시지를 보여준다.', () => {
     // Given
-    const frequencyString = '';
+    const frequencyString = 'ㅁㅁㅁㅁrasdfgzozxx';
+    const frequencyExpectedString = 'ㅁㄱ';
     _useValidateFrequency.mockReturnValue({
       frequencyErrorText: FREQUENCY_ERROR_TEXT,
       validateFrequency: () => null,
@@ -60,9 +68,15 @@ describe('Frequency Form', () => {
 
     // When
     const { getByTestId, queryByText } = render(<FrequencyForm />);
+
     const frequencyStringInput = getByTestId('frequency');
     fireEvent.change(frequencyStringInput, {
       target: { value: frequencyString },
+    });
+
+    const frequencyExpectedStringInput = getByTestId('frequency-expected');
+    fireEvent.change(frequencyExpectedStringInput, {
+      target: { value: frequencyExpectedString },
     });
 
     // Then
