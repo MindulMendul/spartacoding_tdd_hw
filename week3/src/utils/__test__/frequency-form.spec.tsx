@@ -28,9 +28,9 @@ vi.mock('../../hooks/use-validate-frequency', async (importOriginal) => {
 
 const _useValidateFrequency = useValidateFrequency as Mock;
 
-describe('Search Form', () => {
+describe('Frequency Form', () => {
   // User Story 1번
-  it('유저가 검색할 데이터를 입력하고 검색을 시도하면 에러텍스트는 노출되지 않는다.', () => {
+  it('유저가 예측값을 입력했을 때 예측값이 결과값과 같다면, 에러 메시지를 보여주지 않는다.', () => {
     // Given
     const frequencyString = 'TDD 깔쌈하게 잘 구현하는 법';
     _useValidateFrequency.mockReturnValue({
@@ -40,7 +40,7 @@ describe('Search Form', () => {
 
     // When
     const { getByTestId, queryByText } = render(<FrequencyForm />);
-    const frequencyStringInput = getByTestId('search');
+    const frequencyStringInput = getByTestId('frequency');
     fireEvent.change(frequencyStringInput, {
       target: { value: frequencyString },
     });
@@ -50,7 +50,7 @@ describe('Search Form', () => {
   });
 
   // User Story 2번
-  it('유저가 검색할 데이터를 입력하지 않고 검색을 시도하면 에러텍스트가 노출된다.', () => {
+  it('유저가 예측값을 입력했을 때 예측값이 결과값과 다르다면, 예측값이 틀렸다고 에러 메시지를 보여준다.', () => {
     // Given
     const frequencyString = '';
     _useValidateFrequency.mockReturnValue({
@@ -60,7 +60,7 @@ describe('Search Form', () => {
 
     // When
     const { getByTestId, queryByText } = render(<FrequencyForm />);
-    const frequencyStringInput = getByTestId('search');
+    const frequencyStringInput = getByTestId('frequency');
     fireEvent.change(frequencyStringInput, {
       target: { value: frequencyString },
     });

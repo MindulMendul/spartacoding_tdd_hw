@@ -8,19 +8,24 @@ import { findMostFrequentChar } from '../utils/week2';
 
 export const FrequencyForm = () => {
   const [testText, setTestText] = useState('');
-  const [frequencyText, setFrequencyText] = useState('' as string | undefined);
+  const [frequencyText, setFrequencyText] = useState('');
+
   const frequencyValue = useRef<string>();
-  const { validateFrequency } = useValidateFrequency();
+  const { frequencyErrorText, validateFrequency } = useValidateFrequency();
   const handleChange: ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement
-  > = ({ target }: { target: HTMLInputElement | HTMLTextAreaElement }) => {
-    const frequencyString = target.value;
-    validateFrequency(frequencyString);
-    frequencyValue.current = frequencyString;
+  > = (e) => {
+    setFrequencyText(e.target.value);
   };
 
-  const handleSubmit: MouseEventHandler<Element> = () => {
-    setFrequencyText(frequencyValue.current);
+  const handleSubmit: MouseEventHandler<Element> = ({
+    target,
+  }: {
+    target: any;
+  }) => {
+    const frequencyString = target.value;
+    validateFrequency(frequencyText, findMostFrequentChar(testText).join(''));
+    frequencyValue.current = frequencyString;
   };
 
   return (
@@ -34,22 +39,22 @@ export const FrequencyForm = () => {
           label="테스트할 문장"
           placeholder="테스트할 문장을 적어주세요"
           fullWidth
+          value={testText}
           onChange={(e) => {
             setTestText(e.target.value);
           }}
         />
       </Grid2>
       <Grid2 size={9}>
-        <FrequencyField onChange={handleChange} />
+        <FrequencyField
+          onChange={handleChange}
+          frequencyErrorText={frequencyErrorText}
+        />
       </Grid2>
       <Grid2 size={3}>
         <SubmitButton dataTestid="submit-button" onSubmit={handleSubmit}>
           예측
         </SubmitButton>
-      </Grid2>
-      <Grid2 size={12}>
-        <h3>실제 결과값</h3>
-        <div>{findMostFrequentChar(testText)}</div>
       </Grid2>
     </Grid2>
   );

@@ -1,7 +1,10 @@
 /// 단위 테스트 : pure function 단위 테스트
 
-export const validateFrequency = (frequencyString: string) => {
+export const validateFrequency = (
+  frequencyString: string,
+  expectedString: string
+) => {
   return {
-    isValid: frequencyString.length > 0,
+    isValid: frequencyString == expectedString,
   };
 };

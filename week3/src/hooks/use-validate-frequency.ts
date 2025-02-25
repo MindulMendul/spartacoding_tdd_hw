@@ -3,12 +3,14 @@
 import { useState } from 'react';
 import { validateFrequency } from '../utils/validate-frequency';
 
-export const FREQUENCY_ERROR_TEXT =
-  '그래도 무언가 적어주셔야 테스트기도 보람이 있을 거에요... ㅠㅠ';
+export const FREQUENCY_ERROR_TEXT = '오답은 쉽고, 예측은 어려워...';
 export const useValidateFrequency = () => {
   const [frequencyErrorText, setFruquencyErrorText] = useState('');
-  const handleValidateFrequency = (frequencyString: string) => {
-    const { isValid } = validateFrequency(frequencyString);
+  const handleValidateFrequency = (
+    frequencyString: string,
+    expectedString: string
+  ) => {
+    const { isValid } = validateFrequency(frequencyString, expectedString);
     if (isValid) {
       setFruquencyErrorText('');
     } else {

@@ -1,8 +1,12 @@
 import { TextField } from '@mui/material';
-import { useValidateFrequency } from '../hooks/use-validate-frequency';
 
-export const FrequencyField = ({ onChange }: { onChange: any }) => {
-  const { frequencyErrorText } = useValidateFrequency();
+export const FrequencyField = ({
+  frequencyErrorText,
+  onChange,
+}: {
+  frequencyErrorText: string;
+  onChange: any;
+}) => {
   return (
     <TextField
       id="frequency"
