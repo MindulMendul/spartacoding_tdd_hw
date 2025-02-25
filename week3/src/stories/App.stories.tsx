@@ -1,14 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import App from '../App';
-import { SEARCH_ERROR_TEXT } from '../hooks/use-validate-search';
+import { FREQUENCY_ERROR_TEXT } from '../hooks/use-validate-frequency';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: 'Example/SignUpForm',
   render: () => {
-    return (
-      <App/>
-    );
+    return <App />;
   },
   component: App,
   parameters: {
@@ -27,7 +25,7 @@ type Story = StoryObj<typeof meta>;
 export const _SignUpForm: Story = {
   args: {
     errorText: {
-      errorEmailText: SEARCH_ERROR_TEXT,
+      errorEmailText: FREQUENCY_ERROR_TEXT,
     },
     onSubmit: () => null,
     initFormState: () => null,

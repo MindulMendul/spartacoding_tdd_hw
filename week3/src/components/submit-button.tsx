@@ -1,4 +1,6 @@
 import { MouseEventHandler, ReactNode } from 'react';
+import { Button } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 
 export const SubmitButton = ({
   children,
@@ -7,13 +9,18 @@ export const SubmitButton = ({
 }: {
   children: ReactNode;
   dataTestid: string;
-  onSubmit: MouseEventHandler<Element>;
+  onSubmit?: MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
-    <>
-      <button data-testid={dataTestid} onClick={onSubmit}>
-        {children}
-      </button>
-    </>
+    <Button
+      variant="contained"
+      color="secondary"
+      endIcon={<SendIcon />}
+      data-testid={dataTestid}
+      onClick={onSubmit}
+      sx={{ width: 1, height: 1 }}
+    >
+      {children}
+    </Button>
   );
 };

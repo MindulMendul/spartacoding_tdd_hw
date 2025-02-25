@@ -1,39 +1,129 @@
 <div>
-  <div
-    class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-cmpglg-MuiFormControl-root-MuiTextField-root"
-  >
-    <label
-      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root"
-      data-shrink="false"
-      for="search"
-      id="search-label"
-    >
-      검색창
-    </label>
+  <div>
+    <h1>
+      3주 차 - 실무 상황을 가정해보기
+    </h1>
+    <p>
+      입력값을 받으면, 그로부터 결과값을 반환하는 페이지를 가정.
+    </p>
+    <p>
+      근데 이제 1, 2주 차 결과를 곁들인 ww
+    </p>
+    <p>
+      즉, 1주 차에 만든 frequency form 을 조금 개량해서, 2주 차 함수의 결과값을 보는 것으로 결정!
+    </p>
     <div
-      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-1blp12k-MuiInputBase-root-MuiOutlinedInput-root"
+      class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-spacing-xs-1 css-octady-MuiGrid2-root"
     >
-      <input
-        aria-invalid="false"
-        class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input"
-        data-testid="search"
-        id="search"
-        placeholder="검색어를 입력해주세요"
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden="true"
-        class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"
+      <div
+        class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 css-1j0u08r-MuiGrid2-root"
       >
-        <legend
-          class="css-81qg8w"
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-cmpglg-MuiFormControl-root-MuiTextField-root"
         >
-          <span>
-            검색창
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="false"
+            for="frequency"
+            id="frequency-label"
+          >
+            테스트할 문장
+          </label>
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-1blp12k-MuiInputBase-root-MuiOutlinedInput-root"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input"
+              data-testid="frequency"
+              id="frequency"
+              placeholder="테스트할 문장을 적어주세요"
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-81qg8w"
+              >
+                <span>
+                  테스트할 문장
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-9 css-1lay5p2-MuiGrid2-root"
+      >
+        <div
+          class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-cmpglg-MuiFormControl-root-MuiTextField-root"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink="false"
+            for="frequency-expected"
+            id="frequency-expected-label"
+          >
+            2주차 함수 테스트기
+          </label>
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-1blp12k-MuiInputBase-root-MuiOutlinedInput-root"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input"
+              data-testid="frequency-expected"
+              id="frequency-expected"
+              placeholder="입력 후 결과를 아래에 확인하세요!"
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden="true"
+              class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="css-81qg8w"
+              >
+                <span>
+                  2주차 함수 테스트기
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-3 css-hxbzlh-MuiGrid2-root"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorSecondary css-1qlzdsw-MuiButtonBase-root-MuiButton-root"
+          data-testid="submit-button"
+          tabindex="0"
+          type="button"
+        >
+          예측
+          <span
+            class="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeMedium css-1gulhci-MuiButton-endIcon"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
+              data-testid="SendIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"
+              />
+            </svg>
           </span>
-        </legend>
-      </fieldset>
+        </button>
+      </div>
     </div>
   </div>
 </div>
