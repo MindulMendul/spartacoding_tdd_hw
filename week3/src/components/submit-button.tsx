@@ -9,7 +9,7 @@ export const SubmitButton = ({
 }: {
   children: ReactNode;
   dataTestid: string;
-  onSubmit: MouseEventHandler<Element>;
+  onSubmit?: MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
     <Button

@@ -5,7 +5,7 @@ export const FrequencyField = ({
   onChange,
 }: {
   frequencyErrorText: string;
-  onChange: any;
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }) => {
   return (
     <TextField

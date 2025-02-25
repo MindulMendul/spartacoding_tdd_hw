@@ -1,8 +1,8 @@
 import { Grid2, TextField } from '@mui/material';
-import { MouseEventHandler, useState } from 'react';
+import { useState } from 'react';
 import { FrequencyField } from './frequency-field';
 import { SubmitButton } from './submit-button';
-import { ChangeEventHandler, useRef } from 'react';
+import { ChangeEventHandler } from 'react';
 import { useValidateFrequency } from '../hooks/use-validate-frequency';
 import { findMostFrequentChar } from '../utils/week2';
 
@@ -10,7 +10,6 @@ export const FrequencyForm = () => {
   const [testText, setTestText] = useState('');
   const [frequencyText, setFrequencyText] = useState('');
 
-  const frequencyValue = useRef<string>();
   const { frequencyErrorText, validateFrequency } = useValidateFrequency();
   const handleChange: ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement
@@ -18,14 +17,8 @@ export const FrequencyForm = () => {
     setFrequencyText(e.target.value);
   };
 
-  const handleSubmit: MouseEventHandler<Element> = ({
-    target,
-  }: {
-    target: any;
-  }) => {
-    const frequencyString = target.value;
+  const handleSubmit = () => {
     validateFrequency(frequencyText, findMostFrequentChar(testText).join(''));
-    frequencyValue.current = frequencyString;
   };
 
   return (
